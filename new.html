@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+	<meta charset="UTF-8">
+	<title>فرم ثبت نام و ورود</title>
+ 
+ <style>
+  body {
+  direction: rtl;
+   font-family: vazir;
+   margin: 0;
+   background-color: #fff;
+  }
+
+  h1 {
+   text-align: center;
+   margin-top: 50px;
+  font-family: vazir;
+  }
+
+  form {
+   background-color: #fff;
+   max-width: 500px;
+   margin: auto;
+   padding: 20px;
+   box-shadow: 1px 1px 10px #8dde2a;
+  font-family: vazir;
+  }
+
+  input[type="text"], input[type="melli"], input[type="password"] {
+   width: 100%;
+   padding: 12px 20px;
+   margin: 8px 0;
+   display: inline-block;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   box-sizing: border-box;
+  font-family: vazir;
+  }
+
+  button[type="submit"] {
+   background-color: #4CAF50;
+   color: #fff;
+   padding: 12px 20px;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   width: 100%;
+   font-size: 16px;
+   font-weight: bold;
+   letter-spacing: 1px;
+  font-family: vazir;
+  }
+
+  button[type="submit"]:hover {
+   background-color: #45a049;
+  font-family: vazir;
+  }
+
+  span {
+   float: right;
+  }
+
+  a.register-link {
+  font-family: vazir;
+   color: #4CAF50;
+   cursor: pointer;
+   background-color: transparent;
+   border: none;
+   font-size: 14px;
+   text-decoration: underline;
+   padding: 0;
+   margin-top: 8px;
+   margin-right: 8px;
+   cursor: pointer;
+  font-family: vazir;
+  }
+ 
+ .register-link{
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+     margin-top: 10px;
+ font-family: vazir;
+ }
+  .error {
+   color: red;
+   margin-bottom: 10px;
+   font-size: 14px;
+   font-weight: bold;
+  font-family: vazir;
+  }
+ @font-face {
+ font-family: Vazir;
+ font-style: normal;
+ font-weight: normal;
+ src: url('fonts/Vazir.eot');
+ src: url('fonts/Vazir.eot?#iefix') format('embedded-opentype'), 
+ url('fonts/Vazir.woff2') format('woff2'), 
+ url('fonts/Vazir.woff') format('woff'), 
+ url('fonts/Vazir.ttf') format('truetype');
+}
+ </style>
+</head>
+<body>
+<div style="text-align:center;">
+    <img src="Logo.png" alt="Logo">
+ </div>
+ <h1>فرم ثبت نام و ورود</h1>
+ <form id="login-form">
+  <h2>ورود</h2>
+  <div id="login-errors"></div>
+  <label for="melli">کد ملی:</label>
+  <input type="text" id="melli" name="melli" required>
+
+  <label for="password">کلمه عبور:</label>
+  <input type="password" id="password" name="password" required>
+
+  <button type="submit">ورود</button>
+  <button class="register-link" type="button" onclick="showRegisterForm()">ثبت نام</button>
+ </form>
+
+ <form id="register-form" style="display: none;">
+  <h2>ثبت نام کاربر جدید</h2>
+  <div id="register-errors"></div>
+  <label for="name">نام:</label>
+  <input type="text" id="name" name="name" required>
+ <label for="name">نام خانوادگی:</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="melli">کد ملی:</label>
+  <input type="melli" id="register-melli" name="melli" required>
+
+  <label for="password">کلمه عبور:</label>
+  <input type="password" id="register-password" name="password" required>
+
+  <button type="submit">ثبت نام</button>
+  <button class="register-link" type="button" onclick="showLoginForm()">ورود</button>
+ </form>
+
+ <script>
+  function showRegisterForm() {
+   document.getElementById("login-form").style.display = "none";
+   document.getElementById("register-form").style.display = "block";
+  }
+
+  function showLoginForm() {
+   document.getElementById("register-form").style.display = "none";
+   document.getElementById("login-form").style.display = "block";
+  }
+
+  document.getElementById("login-form").addEventListener("submit", function(event) {
+   event.preventDefault();
+   let melli = document.getElementById("melli").value;
+   let password = document.getElementById("password").value;
+
+   // TODO: validate the form data
+
+   // TODO: perform login request using ajax or fetch
+
+   // TODO: handle the login response
+   // if success, redirect to dashboard page
+   // if failure, show error messages
+   let errors = '<div class="error"> نام کاربری یا کلمه عبور اشتباه است</div>';
+   document.getElementById("login-errors").innerHTML = errors;
+  });
+
+  document.getElementById("register-form").addEventListener("submit", function(event) {
+   event.preventDefault();
+   let name = document.getElementById("name").value;
+   let melli = document.getElementById("register-melli").value;
+   let password = document.getElementById("register-password").value;
+
+   // TODO: validate the form data
+
+   // TODO: perform register request using ajax or fetch
+
+   // TODO: handle the register response
+   // if success, show success message and switch
+   // to login form
+   // if failure, show error messages
+   let errors = '<div class="error">Error registering the user</div>';
+   document.getElementById("register-errors").innerHTML = errors;
+  });
+ </script>
+</body>
+</html>
